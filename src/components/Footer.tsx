@@ -12,8 +12,13 @@ export function Footer() {
             Trusted Income Tax & GST Practitioner serving individuals and businesses across India since 2001.
           </p>
           <div className="mt-5 flex gap-3">
-            {[Facebook, Instagram, Linkedin, Youtube].map((Icon, i) => (
-              <a key={i} href="#" aria-label="social" className="flex h-9 w-9 items-center justify-center rounded-sm border border-white/15 hover:border-brand-red hover:text-brand-red transition-colors">
+            {[
+              { Icon: Facebook, href: "#" },
+              { Icon: Instagram, href: "https://www.instagram.com/prakash.parapowerlifter?utm_source=qr&igsh=ZjRoOW41ZzNoM2F3" },
+              { Icon: Linkedin, href: "#" },
+              { Icon: Youtube, href: "#" }
+            ].map(({ Icon, href }, i) => (
+              <a key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label="social" className="flex h-9 w-9 items-center justify-center rounded-sm border border-white/15 hover:border-brand-red hover:text-brand-red transition-colors">
                 <Icon className="h-4 w-4" />
               </a>
             ))}
