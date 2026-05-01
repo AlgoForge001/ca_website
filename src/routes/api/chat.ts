@@ -44,11 +44,18 @@ export const Route = createFileRoute("/api/chat")({
           }));
 
           const apiKey = process.env.LOVABLE_API_KEY;
+          
           if (!apiKey) {
-            return new Response(JSON.stringify({ error: "AI not configured" }), {
-              status: 500,
-              headers: { "Content-Type": "application/json" },
-            });
+            console.warn("LOVABLE_API_KEY is missing. Using mock response.");
+            return new Response(
+              JSON.stringify({ 
+                reply: "I'm currently in demo mode because the API key is not configured. How can I help you with your tax queries?" 
+              }), 
+              {
+                status: 200,
+                headers: { "Content-Type": "application/json" },
+              }
+            );
           }
 
           const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {

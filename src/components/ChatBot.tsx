@@ -35,6 +35,7 @@ export function ChatBot() {
       });
       const data = (await res.json()) as { reply?: string; error?: string };
       if (!res.ok) {
+        console.error("Chat API error:", data.error || res.statusText);
         setMessages((m) => [
           ...m,
           {
@@ -47,7 +48,8 @@ export function ChatBot() {
       } else {
         setMessages((m) => [...m, { role: "assistant", content: data.reply || "..." }]);
       }
-    } catch {
+    } catch (err) {
+      console.error("Chat network error:", err);
       setMessages((m) => [
         ...m,
         { role: "assistant", content: "Network error. Please try again." },
@@ -62,7 +64,7 @@ export function ChatBot() {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label="Open chat"
-        className="fixed bottom-6 right-24 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-brand-red text-white shadow-lg hover:scale-110 transition-transform"
+        className="fixed bottom-6 right-[152px] z-50 flex h-14 w-14 items-center justify-center rounded-full bg-brand-red text-white shadow-lg hover:scale-110 transition-transform"
       >
         {open ? <X className="h-6 w-6" /> : <MessageSquare className="h-6 w-6" />}
       </button>
