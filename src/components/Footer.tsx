@@ -16,7 +16,7 @@ export function Footer() {
               { Icon: Facebook, href: "#" },
               { Icon: Instagram, href: "https://www.instagram.com/prakash.parapowerlifter?utm_source=qr&igsh=ZjRoOW41ZzNoM2F3" },
               { Icon: Linkedin, href: "#" },
-              { Icon: Youtube, href: "#" }
+              { Icon: Youtube, href: "https://www.youtube.com/@prakashgajra1637" }
             ].map(({ Icon, href }, i) => (
               <a key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label="social" className="flex h-9 w-9 items-center justify-center rounded-sm border border-white/15 hover:border-brand-red hover:text-brand-red transition-colors">
                 <Icon className="h-4 w-4" />
