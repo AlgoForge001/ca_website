@@ -43,13 +43,13 @@ export const Route = createFileRoute("/api/chat")({
             content: String(m.content || "").slice(0, 4000),
           }));
 
-          const apiKey = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY;
+          const apiKey = process.env.OPENROUTER_API_KEY || process.env.VITE_OPENROUTER_API_KEY;
           
           if (!apiKey) {
-            console.warn("GEMINI_API_KEY is missing. Using mock response.");
+            console.warn("API key is missing. Using mock response.");
             return new Response(
               JSON.stringify({ 
-                reply: "The chatbot is currently in setup mode. To activate it, please add your GEMINI_API_KEY to your Vercel Environment Variables. You can get a free key from Google AI Studio." 
+                reply: "The chatbot is currently in setup mode. Please configure the API key." 
               }), 
               {
                 status: 200,
@@ -58,39 +58,33 @@ export const Route = createFileRoute("/api/chat")({
             );
           }
 
-          const geminiContents = trimmed.map(m => ({
-            role: m.role === "assistant" ? "model" : "user",
-            parts: [{ text: m.content }]
-          }));
-
-          const aiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+          const aiRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
+              "Authorization": `Bearer ${apiKey}`,
+              "HTTP-Referer": "https://prakashgajra.com",
+              "X-Title": "Prakash Gajra Website",
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              systemInstruction: {
-                parts: [{ text: SYSTEM_PROMPT }]
-              },
-              contents: geminiContents,
-              generationConfig: {
-                temperature: 0.7,
-                maxOutputTokens: 800,
-              }
+              model: "google/gemini-2.5-flash",
+              messages: [{ role: "system", content: SYSTEM_PROMPT }, ...trimmed],
             }),
           });
 
           if (!aiRes.ok) {
             const text = await aiRes.text();
-            console.error("Gemini API error:", aiRes.status, text);
+            console.error("OpenRouter API error:", aiRes.status, text);
             return new Response(JSON.stringify({ error: "AI service error. Please check your API key." }), {
               status: 502,
               headers: { "Content-Type": "application/json" },
             });
           }
 
-          const data = await aiRes.json();
-          const reply = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? "I'm sorry, I couldn't generate a response.";
+          const data = (await aiRes.json()) as {
+            choices?: Array<{ message?: { content?: string } }>;
+          };
+          const reply = data.choices?.[0]?.message?.content?.trim() ?? "I'm sorry, I couldn't generate a response.";
 
           return new Response(JSON.stringify({ reply }), {
             status: 200,
