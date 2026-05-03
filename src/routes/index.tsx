@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Phone, MessageCircle, ArrowRight, ShieldCheck, Wallet, Globe2, Lock, Star, CheckCircle2 } from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionHeader } from "@/components/SectionHeader";
-import { services, itrDocuments, team, testimonials } from "@/lib/data";
+import { services, itrDocuments, testimonials } from "@/lib/data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -150,20 +150,8 @@ function HomePage() {
       <section className="section-pg bg-muted">
         <div className="container-pg">
           <SectionHeader eyebrow="Our People" title="Meet the Team Behind Your Compliance" center />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {team.map((m) => (
-              <div key={m.name} className="bg-card border-t-[3px] border-brand-red rounded-sm p-6 text-center hover:-translate-y-1 transition-transform">
-                <div className="mx-auto mb-4 flex h-20 w-20 overflow-hidden items-center justify-center rounded-full bg-brand-black text-white font-display text-2xl font-bold">
-                  {m.image ? (
-                    <img src={m.image} alt={m.name} className="h-full w-full object-cover" />
-                  ) : (
-                    m.name.split(" ").map((n) => n[0]).slice(0, 2).join("")
-                  )}
-                </div>
-                <h3 className="text-base font-bold text-brand-black">{m.name}</h3>
-                <div className="text-xs text-brand-red font-semibold mt-1 uppercase tracking-wider">{m.role}</div>
-              </div>
-            ))}
+          <div className="max-w-5xl mx-auto overflow-hidden rounded-sm border border-border shadow-sm">
+            <img src="/image.png" alt="Prakash Gajra & Associates Team" className="w-full h-auto object-cover" />
           </div>
         </div>
       </section>
