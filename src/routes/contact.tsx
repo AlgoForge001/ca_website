@@ -99,7 +99,7 @@ function ContactPage() {
               <div className="aspect-[4/3] w-full overflow-hidden rounded-sm border border-border">
                 <iframe
                   title="Office Location"
-                  src="https://www.google.com/maps?q=Palghar+West+Maharashtra+401404&output=embed"
+                  src="https://www.google.com/maps?q=Vraj+201+Rajnikamal+Park+Behind+Reliance+Trends+Mahim+Road+Palghar+West+401404&output=embed"
                   className="h-full w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
