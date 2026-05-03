@@ -67,15 +67,20 @@ export const Route = createFileRoute("/api/chat")({
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              model: "google/gemini-2.5-flash",
+              model: "meta-llama/llama-3.3-8b-instruct:free",
               messages: [{ role: "system", content: SYSTEM_PROMPT }, ...trimmed],
             }),
           });
 
           if (!aiRes.ok) {
-            const text = await aiRes.text();
-            console.error("OpenRouter API error:", aiRes.status, text);
-            return new Response(JSON.stringify({ error: "AI service error. Please check your API key." }), {
+            const errorText = await aiRes.text();
+            console.error("OpenRouter API error:", aiRes.status, errorText);
+            let errorMsg = "AI service error.";
+            try {
+              const errorJson = JSON.parse(errorText);
+              errorMsg = errorJson?.error?.message || errorMsg;
+            } catch {}
+            return new Response(JSON.stringify({ error: `${errorMsg} (Status: ${aiRes.status})` }), {
               status: 502,
               headers: { "Content-Type": "application/json" },
             });
