@@ -28,8 +28,12 @@ function TeamPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
             {team.map((m) => (
               <div key={m.name} className="bg-card border-t-[3px] border-brand-red rounded-sm p-8 text-center hover:-translate-y-1 transition-transform shadow-sm">
-                <div className="mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-full bg-brand-black text-white font-display text-3xl font-bold">
-                  {m.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                <div className="mx-auto mb-5 flex h-24 w-24 overflow-hidden items-center justify-center rounded-full bg-brand-black text-white font-display text-3xl font-bold">
+                  {m.image ? (
+                    <img src={m.image} alt={m.name} className="h-full w-full object-cover" />
+                  ) : (
+                    m.name.split(" ").map((n) => n[0]).slice(0, 2).join("")
+                  )}
                 </div>
                 <h3 className="text-lg font-bold text-brand-black">{m.name}</h3>
                 <div className="text-sm text-brand-red font-semibold mt-1 uppercase tracking-wider">{m.role}</div>

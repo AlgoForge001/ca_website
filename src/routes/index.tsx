@@ -153,8 +153,12 @@ function HomePage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {team.map((m) => (
               <div key={m.name} className="bg-card border-t-[3px] border-brand-red rounded-sm p-6 text-center hover:-translate-y-1 transition-transform">
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-brand-black text-white font-display text-2xl font-bold">
-                  {m.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                <div className="mx-auto mb-4 flex h-20 w-20 overflow-hidden items-center justify-center rounded-full bg-brand-black text-white font-display text-2xl font-bold">
+                  {m.image ? (
+                    <img src={m.image} alt={m.name} className="h-full w-full object-cover" />
+                  ) : (
+                    m.name.split(" ").map((n) => n[0]).slice(0, 2).join("")
+                  )}
                 </div>
                 <h3 className="text-base font-bold text-brand-black">{m.name}</h3>
                 <div className="text-xs text-brand-red font-semibold mt-1 uppercase tracking-wider">{m.role}</div>

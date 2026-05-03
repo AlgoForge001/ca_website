@@ -31,10 +31,10 @@ export const itrDocuments = [
 ];
 
 export const team = [
-  { name: "Prakash Gajra", role: "Founder & Chairman" },
-  { name: "Arya Gajra", role: "Co-Founder & CEO" },
-  { name: "Manjula Gajra", role: "Admin Head" },
-  { name: "Prajakta Raut", role: "Head Accountant" },
+  { name: "Prakash Gajra", role: "Founder & Chairman", image: "/prakash.png" },
+  { name: "Arya Gajra", role: "Co-Founder & CEO", image: "/arya.png" },
+  { name: "Manjula Gajra", role: "Admin Head", image: "/manjula.png" },
+  { name: "Prajakta Raut", role: "Head Accountant", image: "/prajakta.png" },
   { name: "Sonali Gawad", role: "Accountant" },
 ];
 
