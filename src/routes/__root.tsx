@@ -3,7 +3,6 @@ import appCss from "../styles.css?url";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { WhatsAppFloat } from "../components/WhatsAppFloat";
-import { ChatBot } from "../components/ChatBot";
 import { InstagramFloat } from "../components/InstagramFloat";
 import { YouTubeFloat } from "../components/YouTubeFloat";
 
@@ -68,6 +67,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <script src='https://www.noupe.com/embed/019ded6d33e77926b6a6f5147cb9faef0b66.js'></script>
       </body>
     </html>
   );
@@ -84,7 +84,6 @@ function RootComponent() {
       <WhatsAppFloat />
       <InstagramFloat />
       <YouTubeFloat />
-      <ChatBot />
     </div>
   );
 }
