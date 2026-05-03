@@ -32,7 +32,7 @@ function ContactPage() {
               { icon: Phone, title: "Phone", value: "+91 9822979184", href: "tel:+919822979184" },
               { icon: Mail, title: "Email", value: "prakashgajra@gmail.com", href: "mailto:prakashgajra@gmail.com" },
               { icon: MessageCircle, title: "WhatsApp", value: "Chat With Us", href: "https://wa.me/919822979184" },
-              { icon: MapPin, title: "Office", value: "Palghar, Maharashtra", href: "https://maps.app.goo.gl/Ngy5VEd8bo3rpR3XA" },
+              { icon: MapPin, title: "Office", value: "Palghar, Maharashtra", href: "https://maps.app.goo.gl/paCbrJQWQZnNfeh46?g_st=ac" },
             ].map((c) => (
               <a key={c.title} href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="card-service block">
                 <c.icon className="h-7 w-7 text-brand-red mb-4" />
@@ -99,7 +99,7 @@ function ContactPage() {
               <div className="aspect-[4/3] w-full overflow-hidden rounded-sm border border-border">
                 <iframe
                   title="Office Location"
-                  src="https://www.google.com/maps?q=Vraj+201+Rajnikamal+Park+Behind+Reliance+Trends+Mahim+Road+Palghar+West+401404&output=embed"
+                  src="https://www.google.com/maps?q=Prakash+Gajra+Income+Tax+GST+Practitioner+Palghar+Maharashtra+401404&output=embed"
                   className="h-full w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

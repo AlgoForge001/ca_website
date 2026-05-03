@@ -3,7 +3,7 @@ import { Instagram } from "lucide-react";
 export function InstagramFloat() {
   return (
     <a
-      href="https://www.instagram.com/prakash.parapowerlifter?utm_source=qr&igsh=ZjRoOW41ZzNoM2F3"
+      href="https://www.instagram.com/prakashgajra?utm_source=qr&igsh=bm03dWw0cXc3ZmZn"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Follow on Instagram"
