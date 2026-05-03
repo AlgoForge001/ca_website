@@ -36,11 +36,11 @@ export function Header() {
             </Link>
           ))}
           <a
-            href="tel:+919822979157"
+            href="tel:+919822979184"
             className="inline-flex items-center gap-2 rounded-sm bg-brand-red px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-red-dark transition-colors"
           >
             <Phone className="h-4 w-4" />
-            +91 9822979157
+            +91 9822979184
           </a>
         </nav>
 
@@ -69,11 +69,11 @@ export function Header() {
               </Link>
             ))}
             <a
-              href="tel:+919822979157"
+              href="tel:+919822979184"
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-sm bg-brand-red px-4 py-3 text-sm font-semibold text-white"
             >
               <Phone className="h-4 w-4" />
-              +91 9822979157
+              +91 9822979184
             </a>
           </div>
         </div>

@@ -42,7 +42,7 @@ export function ChatBot() {
             role: "assistant",
             content:
               data.error ||
-              "Sorry, I couldn't respond just now. Please try again or WhatsApp us at +91 9822979157.",
+              "Sorry, I couldn't respond just now. Please try again or WhatsApp us at +91 9822979184.",
           },
         ]);
       } else {

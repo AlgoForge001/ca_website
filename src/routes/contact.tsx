@@ -29,9 +29,9 @@ function ContactPage() {
         <div className="container-pg">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-14">
             {[
-              { icon: Phone, title: "Phone", value: "+91 9822979157", href: "tel:+919822979157" },
+              { icon: Phone, title: "Phone", value: "+91 9822979184", href: "tel:+919822979184" },
               { icon: Mail, title: "Email", value: "prakashgajra@gmail.com", href: "mailto:prakashgajra@gmail.com" },
-              { icon: MessageCircle, title: "WhatsApp", value: "Chat With Us", href: "https://wa.me/919822979157" },
+              { icon: MessageCircle, title: "WhatsApp", value: "Chat With Us", href: "https://wa.me/919822979184" },
               { icon: MapPin, title: "Office", value: "Palghar, Maharashtra", href: "https://maps.app.goo.gl/Ngy5VEd8bo3rpR3XA" },
             ].map((c) => (
               <a key={c.title} href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="card-service block">
@@ -93,6 +93,9 @@ function ContactPage() {
                   Maharashtra – 401404
                 </p>
               </div>
+              <div className="w-full overflow-hidden rounded-sm border border-border">
+                <video src="/address.mp4" controls className="w-full h-auto" />
+              </div>
               <div className="aspect-[4/3] w-full overflow-hidden rounded-sm border border-border">
                 <iframe
                   title="Office Location"
@@ -102,7 +105,7 @@ function ContactPage() {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-              <a href="https://wa.me/919822979157" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 w-full rounded-sm bg-whatsapp px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity">
+              <a href="https://wa.me/919822979184" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 w-full rounded-sm bg-whatsapp px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity">
                 <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
               </a>
             </div>

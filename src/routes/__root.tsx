@@ -5,6 +5,7 @@ import { Footer } from "../components/Footer";
 import { WhatsAppFloat } from "../components/WhatsAppFloat";
 import { ChatBot } from "../components/ChatBot";
 import { InstagramFloat } from "../components/InstagramFloat";
+import { YouTubeFloat } from "../components/YouTubeFloat";
 
 function NotFoundComponent() {
   return (
@@ -82,6 +83,7 @@ function RootComponent() {
       <Footer />
       <WhatsAppFloat />
       <InstagramFloat />
+      <YouTubeFloat />
       <ChatBot />
     </div>
   );

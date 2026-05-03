@@ -43,10 +43,10 @@ function HomePage() {
               & Companies Across India.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a href="tel:+919822979157" className="inline-flex items-center justify-center gap-2 rounded-sm bg-brand-red px-7 py-3.5 text-sm font-semibold text-white hover:bg-brand-red-dark transition-colors">
+              <a href="tel:+919822979184" className="inline-flex items-center justify-center gap-2 rounded-sm bg-brand-red px-7 py-3.5 text-sm font-semibold text-white hover:bg-brand-red-dark transition-colors">
                 <Phone className="h-4 w-4" /> Call Now
               </a>
-              <a href="https://wa.me/919822979157" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-sm border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors">
+              <a href="https://wa.me/919822979184" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-sm border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors">
                 <MessageCircle className="h-4 w-4" /> WhatsApp Us
               </a>
             </div>
@@ -195,10 +195,10 @@ function HomePage() {
             <p className="mt-2 text-white/85">Get in touch today for a no-obligation consultation.</p>
           </div>
           <div className="flex gap-3">
-            <a href="https://wa.me/919822979157" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-sm bg-white px-6 py-3.5 text-sm font-semibold text-brand-red hover:bg-white/90 transition-colors">
+            <a href="https://wa.me/919822979184" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-sm bg-white px-6 py-3.5 text-sm font-semibold text-brand-red hover:bg-white/90 transition-colors">
               <MessageCircle className="h-4 w-4" /> WhatsApp Us
             </a>
-            <a href="tel:+919822979157" className="inline-flex items-center gap-2 rounded-sm border border-white/40 px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors">
+            <a href="tel:+919822979184" className="inline-flex items-center gap-2 rounded-sm border border-white/40 px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors">
               <Phone className="h-4 w-4" /> Call
             </a>
           </div>
