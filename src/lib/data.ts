@@ -35,7 +35,7 @@ export const team = [
   { name: "Arya Gajra", role: "Co-Founder & CEO", image: "/arya.png" },
   { name: "Manjula Gajra", role: "Admin Head", image: "/manjula.png" },
   { name: "Prajakta Raut", role: "Head Accountant", image: "/prajakta.png" },
-  { name: "Sonali Gawad", role: "Accountant" },
+  { name: "Sonali Gawad", role: "Accountant", image: "/sonali.png" },
 ];
 
 export const testimonials = [
