@@ -43,13 +43,13 @@ export const Route = createFileRoute("/api/chat")({
             content: String(m.content || "").slice(0, 4000),
           }));
 
-          const apiKey = process.env.LOVABLE_API_KEY;
+          const apiKey = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY;
           
           if (!apiKey) {
-            console.warn("LOVABLE_API_KEY is missing. Using mock response.");
+            console.warn("GEMINI_API_KEY is missing. Using mock response.");
             return new Response(
               JSON.stringify({ 
-                reply: "I'm currently in demo mode because the API key is not configured. How can I help you with your tax queries?" 
+                reply: "The chatbot is currently in setup mode. To activate it, please add your GEMINI_API_KEY to your Vercel Environment Variables. You can get a free key from Google AI Studio." 
               }), 
               {
                 status: 200,
@@ -58,43 +58,39 @@ export const Route = createFileRoute("/api/chat")({
             );
           }
 
-          const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+          const geminiContents = trimmed.map(m => ({
+            role: m.role === "assistant" ? "model" : "user",
+            parts: [{ text: m.content }]
+          }));
+
+          const aiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
             method: "POST",
             headers: {
-              Authorization: `Bearer ${apiKey}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              model: "google/gemini-2.5-flash",
-              messages: [{ role: "system", content: SYSTEM_PROMPT }, ...trimmed],
+              systemInstruction: {
+                parts: [{ text: SYSTEM_PROMPT }]
+              },
+              contents: geminiContents,
+              generationConfig: {
+                temperature: 0.7,
+                maxOutputTokens: 800,
+              }
             }),
           });
 
           if (!aiRes.ok) {
             const text = await aiRes.text();
-            console.error("AI Gateway error:", aiRes.status, text);
-            if (aiRes.status === 429) {
-              return new Response(
-                JSON.stringify({ error: "Too many requests. Please try again shortly." }),
-                { status: 429, headers: { "Content-Type": "application/json" } }
-              );
-            }
-            if (aiRes.status === 402) {
-              return new Response(
-                JSON.stringify({ error: "AI credits exhausted. Please contact the site owner." }),
-                { status: 402, headers: { "Content-Type": "application/json" } }
-              );
-            }
-            return new Response(JSON.stringify({ error: "AI service error" }), {
+            console.error("Gemini API error:", aiRes.status, text);
+            return new Response(JSON.stringify({ error: "AI service error. Please check your API key." }), {
               status: 502,
               headers: { "Content-Type": "application/json" },
             });
           }
 
-          const data = (await aiRes.json()) as {
-            choices?: Array<{ message?: { content?: string } }>;
-          };
-          const reply = data.choices?.[0]?.message?.content?.trim() ?? "";
+          const data = await aiRes.json();
+          const reply = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? "I'm sorry, I couldn't generate a response.";
 
           return new Response(JSON.stringify({ reply }), {
             status: 200,
